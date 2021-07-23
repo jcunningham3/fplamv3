@@ -25,7 +25,18 @@
         {% for all_players in info['all_player_data'] %}
           {% if my_players['element'] == all_players['id'] and all_players['element_type'] == 1 and my_players['position'] == 1 %}
             <div class="w3-btn w3-ripple" >
-              {{ all_players['web_name'] }}
+              <!-- player img -->
+              <div class="container">
+                {% for jersey in jerseys %}
+                  {% if my_players['team'] == jersey['id'] %}
+                  <!-- jersey -->
+                  <img src="{{jersey_list['jersey_goal']}}" alt="no img">
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <p>
+                {{ all_players['web_name'] }}
+              </p>
             </div>
           {% endif %}
         {% endfor %}
