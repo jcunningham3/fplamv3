@@ -30,20 +30,30 @@
       {% for my_players in info['my_picks'] %}
         {% for all_players in info['all_player_data'] %}
           {% if my_players['element'] == all_players['id'] and all_players['element_type'] == 1 and my_players['position'] == 1 %}
-            <div class="w3-btn w3-ripple" >
-              <!-- player img -->
-              <div class="container">
-                {% for jersey in jersey_list %}
-                  {% if all_players['team'] == jersey['id'] %}
-                  <!-- jersey -->
-                  <img src="{{jersey['jersey_goal']}}" alt="no img">
-                  {% endif %}
-                {% endfor %}
-              </div>
-              <p>
-                {{ all_players['web_name'] }}
-              </p>
+          <div class="w3-btn w3-ripple">
+            <!-- player img -->
+            <div class="container">
+            {% for jersey in jersey_list %}
+              {% if all_players['team'] == jersey['id'] %}
+              <!-- jersey -->
+              <img src="{{jersey['jersey_goal']}}" alt="no img">
+              {% endif %}
+            {% endfor %}
             </div>
+            {% if my_players['is_captain'] == True %}
+            <p>
+              {{ all_players['web_name'] }} <b class="w3-text-black">c</b>
+            </p>
+            {% elif my_players['is_vice_captain'] == True %}
+            <p>
+              {{ all_players['web_name'] }}<b class="w3-text-black">vc</b>
+            </p>
+            {% else %}
+            <p>
+              {{ all_players['web_name'] }}
+            </p>
+            {% endif %}
+          </div>
           {% endif %}
         {% endfor %}
       {% endfor %}
@@ -54,20 +64,30 @@
       {% for my_players in info['my_picks'] %}
         {% for all_players in info['all_player_data'] %}
           {% if my_players['element'] == all_players['id'] and all_players['element_type'] == 2 and my_players['position'] <= 6 %}
-            <div class="w3-btn w3-ripple">
-              <!-- player img -->
-              <div class="container">
-                {% for jersey in jersey_list %}
-                  {% if all_players['team'] == jersey['id'] %}
-                  <!-- jersey -->
-                  <img src="{{jersey['jersey']}}" alt="no img">
-                  {% endif %}
-                {% endfor %}
-              </div>
-              <p>
-                {{ all_players['web_name'] }}
-              </p>
+          <div class="w3-btn w3-ripple">
+            <!-- player img -->
+            <div class="container">
+            {% for jersey in jersey_list %}
+              {% if all_players['team'] == jersey['id'] %}
+              <!-- jersey -->
+              <img src="{{jersey['jersey']}}" alt="no img">
+              {% endif %}
+            {% endfor %}
             </div>
+            {% if my_players['is_captain'] == True %}
+            <p>
+              {{ all_players['web_name'] }} <b class="w3-text-black">c</b>
+            </p>
+            {% elif my_players['is_vice_captain'] == True %}
+            <p>
+              {{ all_players['web_name'] }}<b class="w3-text-black">vc</b>
+            </p>
+            {% else %}
+            <p>
+              {{ all_players['web_name'] }}
+            </p>
+            {% endif %}
+          </div>
           {% endif %}
         {% endfor %}
       {% endfor %}
@@ -78,20 +98,30 @@
       {% for my_players in info['my_picks'] %}
         {% for all_players in info['all_player_data'] %}
           {% if my_players['element'] == all_players['id'] and all_players['element_type'] == 3 and my_players['position'] <= 10 %}
-            <div class="w3-btn w3-ripple">
-              <!-- player img -->
-              <div class="container">
-                {% for jersey in jersey_list %}
-                  {% if all_players['team'] == jersey['id'] %}
-                  <!-- jersey -->
-                  <img src="{{jersey['jersey']}}" alt="no img">
-                  {% endif %}
-                {% endfor %}
-              </div>
-              <p>
-                {{ all_players['web_name'] }}
-              </p>
+          <div class="w3-btn w3-ripple">
+            <!-- player img -->
+            <div class="container">
+            {% for jersey in jersey_list %}
+              {% if all_players['team'] == jersey['id'] %}
+              <!-- jersey -->
+              <img src="{{jersey['jersey']}}" alt="no img">
+              {% endif %}
+            {% endfor %}
             </div>
+            {% if my_players['is_captain'] == True %}
+            <p>
+              {{ all_players['web_name'] }} <b class="w3-text-black">c</b>
+            </p>
+            {% elif my_players['is_vice_captain'] == True %}
+            <p>
+              {{ all_players['web_name'] }}<b class="w3-text-black">vc</b>
+            </p>
+            {% else %}
+            <p>
+              {{ all_players['web_name'] }}
+            </p>
+            {% endif %}
+          </div>
           {% endif %}
         {% endfor %}
       {% endfor %}
@@ -102,20 +132,30 @@
       {% for my_players in info['my_picks'] %}
         {% for all_players in info['all_player_data'] %}
           {% if my_players['element'] == all_players['id'] and all_players['element_type'] == 4 and my_players['position'] <= 11 %}
-            <div class="w3-btn w3-ripple">
-              <!-- player img -->
-              <div class="container">
-                {% for jersey in jersey_list %}
-                  {% if all_players['team'] == jersey['id'] %}
-                  <!-- jersey -->
-                  <img src="{{jersey['jersey']}}" alt="no img">
-                  {% endif %}
-                {% endfor %}
-              </div>
-              <p>
-                {{ all_players['web_name'] }}
-              </p>
+          <div class="w3-btn w3-ripple">
+            <!-- player img -->
+            <div class="container">
+            {% for jersey in jersey_list %}
+              {% if all_players['team'] == jersey['id'] %}
+              <!-- jersey -->
+              <img src="{{jersey['jersey']}}" alt="no img">
+              {% endif %}
+            {% endfor %}
             </div>
+            {% if my_players['is_captain'] == True %}
+            <p>
+              {{ all_players['web_name'] }} <b class="w3-text-black">c</b>
+            </p>
+            {% elif my_players['is_vice_captain'] == True %}
+            <p>
+              {{ all_players['web_name'] }}<b class="w3-text-black">vc</b>
+            </p>
+            {% else %}
+            <p>
+              {{ all_players['web_name'] }}
+            </p>
+            {% endif %}
+          </div>
           {% endif %}
         {% endfor %}
       {% endfor %}
@@ -131,20 +171,30 @@
       {% for my_players in info['my_picks'] %}
         {% for all_players in info['all_player_data'] %}
           {% if my_players['element'] == all_players['id'] and my_players['position'] >= 12 %}
-            <div class="w3-btn w3-ripple">
-              <!-- player img -->
-              <div class="container">
-                {% for jersey in jersey_list %}
-                  {% if all_players['team'] == jersey['id'] %}
-                  <!-- jersey -->
-                  <img src="{{jersey['jersey']}}" alt="no img">
-                  {% endif %}
-                {% endfor %}
-              </div>
-              <p>
-                {{ all_players['web_name'] }}
-              </p>
+          <div class="w3-btn w3-ripple">
+            <!-- player img -->
+            <div class="container">
+            {% for jersey in jersey_list %}
+              {% if all_players['team'] == jersey['id'] %}
+              <!-- jersey -->
+              <img src="{{jersey['jersey']}}" alt="no img">
+              {% endif %}
+            {% endfor %}
             </div>
+            {% if my_players['is_captain'] == True %}
+            <p>
+              {{ all_players['web_name'] }} <b class="w3-text-black">c</b>
+            </p>
+            {% elif my_players['is_vice_captain'] == True %}
+            <p>
+              {{ all_players['web_name'] }}<b class="w3-text-black">vc</b>
+            </p>
+            {% else %}
+            <p>
+              {{ all_players['web_name'] }}
+            </p>
+            {% endif %}
+          </div>
           {% endif %}
         {% endfor %}
       {% endfor %}
