@@ -27,15 +27,15 @@ def api_call():
 
     # data needed for the post request
     payload = {
-     'password': 'Winter2011',
-     'login': 'jan6person@hotmail.com',
+     'password': 'Tottenham7',
+     'login': 'cunheez3@gmail.com',
      'redirect_uri': 'https://fantasy.premierleague.com/a/login',
      'app': 'plfpl-web'
     }
     session.post(url, data=payload)
 
     # Get response sent with authorization cookies
-    res = session.get('https://fantasy.premierleague.com/api/my-team/709137')
+    res = session.get('https://fantasy.premierleague.com/api/my-team/307976')
 
     # setting the response to a var called 'data' and making the response json
     data = res.json()
@@ -120,11 +120,13 @@ def analysis():
     #sort the star list in descending order
     stars = sorted(stars, key=lambda i: (i['total_points']), reverse=True)
 
-
 # run all the functions to create the team profile
 def run_team():
     api_call()
     all_footballers()
-    user_personal_info(709137)
+    user_personal_info(307976)
     classic_league()
     analysis()
+
+#make_user_profile('cunheez3@gmail.com', 'Tottenham7', 307976)
+#make_user_profile('jan6person@hotmail.com', 'Winter2011', 709137)

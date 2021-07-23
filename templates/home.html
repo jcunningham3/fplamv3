@@ -2,6 +2,12 @@
 {% block title %}{% endblock %}
 {% block content %}
 
+<style media="screen">
+  img {
+    width: 30px;
+  }
+</style>
+
 <!--basic  user info -->
 <div class="w3-container">
   <h3><b>{{ info['user_info']['name'] }}</b></h3>
@@ -27,10 +33,10 @@
             <div class="w3-btn w3-ripple" >
               <!-- player img -->
               <div class="container">
-                {% for jersey in jerseys %}
-                  {% if my_players['team'] == jersey['id'] %}
+                {% for jersey in jersey_list %}
+                  {% if all_players['team'] == jersey['id'] %}
                   <!-- jersey -->
-                  <img src="{{jersey_list['jersey_goal']}}" alt="no img">
+                  <img src="{{jersey['jersey_goal']}}" alt="no img">
                   {% endif %}
                 {% endfor %}
               </div>
@@ -49,7 +55,18 @@
         {% for all_players in info['all_player_data'] %}
           {% if my_players['element'] == all_players['id'] and all_players['element_type'] == 2 and my_players['position'] <= 6 %}
             <div class="w3-btn w3-ripple">
-              {{ all_players['web_name'] }}
+              <!-- player img -->
+              <div class="container">
+                {% for jersey in jersey_list %}
+                  {% if all_players['team'] == jersey['id'] %}
+                  <!-- jersey -->
+                  <img src="{{jersey['jersey']}}" alt="no img">
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <p>
+                {{ all_players['web_name'] }}
+              </p>
             </div>
           {% endif %}
         {% endfor %}
@@ -62,7 +79,18 @@
         {% for all_players in info['all_player_data'] %}
           {% if my_players['element'] == all_players['id'] and all_players['element_type'] == 3 and my_players['position'] <= 10 %}
             <div class="w3-btn w3-ripple">
-              {{ all_players['web_name'] }}
+              <!-- player img -->
+              <div class="container">
+                {% for jersey in jersey_list %}
+                  {% if all_players['team'] == jersey['id'] %}
+                  <!-- jersey -->
+                  <img src="{{jersey['jersey']}}" alt="no img">
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <p>
+                {{ all_players['web_name'] }}
+              </p>
             </div>
           {% endif %}
         {% endfor %}
@@ -75,7 +103,18 @@
         {% for all_players in info['all_player_data'] %}
           {% if my_players['element'] == all_players['id'] and all_players['element_type'] == 4 and my_players['position'] <= 11 %}
             <div class="w3-btn w3-ripple">
-              {{ all_players['web_name'] }}
+              <!-- player img -->
+              <div class="container">
+                {% for jersey in jersey_list %}
+                  {% if all_players['team'] == jersey['id'] %}
+                  <!-- jersey -->
+                  <img src="{{jersey['jersey']}}" alt="no img">
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <p>
+                {{ all_players['web_name'] }}
+              </p>
             </div>
           {% endif %}
         {% endfor %}
@@ -93,7 +132,18 @@
         {% for all_players in info['all_player_data'] %}
           {% if my_players['element'] == all_players['id'] and my_players['position'] >= 12 %}
             <div class="w3-btn w3-ripple">
-              {{ all_players['web_name'] }}
+              <!-- player img -->
+              <div class="container">
+                {% for jersey in jersey_list %}
+                  {% if all_players['team'] == jersey['id'] %}
+                  <!-- jersey -->
+                  <img src="{{jersey['jersey']}}" alt="no img">
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <p>
+                {{ all_players['web_name'] }}
+              </p>
             </div>
           {% endif %}
         {% endfor %}
@@ -136,6 +186,11 @@
               {% for player in stars %}
                 {% if player['element_type'] == 1 %}
                 <div class="w3-btn w3-ripple">
+                  {% for jersey in jersey_list %}
+                  {% if player['team'] == jersey['id'] %}
+                  <img src="{{jersey['logo']}}" alt="img">
+                  {% endif %}
+                  {% endfor %}
                   <div class="">{{ player['web_name'] }}</div>
                   <div class="w3-border w3-round">{{ player['total_points'] }}</div>
                 </div>
@@ -148,6 +203,11 @@
               {% for player in stars %}
                 {% if player['element_type'] == 2 %}
                 <div class="w3-btn w3-ripple">
+                  {% for jersey in jersey_list %}
+                  {% if player['team'] == jersey['id'] %}
+                  <img src="{{jersey['logo']}}" alt="img">
+                  {% endif %}
+                  {% endfor %}
                   <div class="">{{ player['web_name'] }}</div>
                   <div class="w3-border w3-round">{{ player['total_points'] }}</div>
                 </div>
@@ -160,6 +220,11 @@
               {% for player in stars %}
                 {% if player['element_type'] == 3 %}
                 <div class="w3-btn w3-ripple">
+                  {% for jersey in jersey_list %}
+                  {% if player['team'] == jersey['id'] %}
+                  <img src="{{jersey['logo']}}" alt="img">
+                  {% endif %}
+                  {% endfor %}
                   <div class="">{{ player['web_name'] }}</div>
                   <div class="w3-border w3-round">{{ player['total_points'] }}</div>
                 </div>
@@ -172,6 +237,11 @@
               {% for player in stars %}
                 {% if player['element_type'] == 4 %}
                 <div class="w3-btn w3-ripple">
+                  {% for jersey in jersey_list %}
+                  {% if player['team'] == jersey['id'] %}
+                  <img src="{{jersey['logo']}}" alt="img">
+                  {% endif %}
+                  {% endfor %}
                   <div class="">{{ player['web_name'] }}</div>
                   <div class="w3-border w3-round">{{ player['total_points'] }}</div>
                 </div>
@@ -194,6 +264,7 @@
                     <tr>
                       <th></th>
                       <th>name</th>
+                      <th>team</th>
                       <th>total points</th>
                       <th>pts/gm</th>
                       <th>season value</th>
@@ -208,6 +279,13 @@
                         <tr>
                           <td class="text-warning">{{ info['user_info']['name'] }}</td>
                           <td>{{ all_players['web_name'] }}</td>
+                          <th>
+                            {% for jersey in jersey_list %}
+                            {% if all_players['team'] == jersey['id'] %}
+                            <img src="{{jersey['logo']}}" alt="img">
+                            {% endif %}
+                            {% endfor %}
+                          </th>
                           <td>{{ all_players['total_points'] }}</td>
                           <td>{{ all_players['points_per_game'] }}</td>
                           <td>{{ all_players['value_season'] }}</td>
@@ -223,6 +301,13 @@
                       <tr>
                         <td>Top performers</td>
                         <td>{{ player['web_name'] }}</td>
+                        <th>
+                          {% for jersey in jersey_list %}
+                          {% if player['team'] == jersey['id'] %}
+                          <img src="{{jersey['logo']}}" alt="img">
+                          {% endif %}
+                          {% endfor %}
+                        </th>
                         <td>{{ player['total_points'] }}</td>
                         <td>{{ player['points_per_game'] }}</td>
                         <td>{{ player['value_season'] }}</td>
@@ -242,6 +327,7 @@
                     <tr>
                       <th></th>
                       <th>name</th>
+                      <th>team</th>
                       <th>total points</th>
                       <th>pts/gm</th>
                       <th>season value</th>
@@ -256,6 +342,13 @@
                         <tr>
                           <td class="text-danger">{{ info['user_info']['name'] }}</td>
                           <td>{{ all_players['web_name'] }}</td>
+                          <th>
+                            {% for jersey in jersey_list %}
+                            {% if all_players['team'] == jersey['id'] %}
+                            <img src="{{jersey['logo']}}" alt="img">
+                            {% endif %}
+                            {% endfor %}
+                          </th>
                           <td>{{ all_players['total_points'] }}</td>
                           <td>{{ all_players['points_per_game'] }}</td>
                           <td>{{ all_players['value_season'] }}</td>
@@ -271,6 +364,13 @@
                       <tr>
                         <td>Top performers</td>
                         <td>{{ player['web_name'] }}</td>
+                        <th>
+                          {% for jersey in jersey_list %}
+                          {% if player['team'] == jersey['id'] %}
+                          <img src="{{jersey['logo']}}" alt="img">
+                          {% endif %}
+                          {% endfor %}
+                        </th>
                         <td>{{ player['total_points'] }}</td>
                         <td>{{ player['points_per_game'] }}</td>
                         <td>{{ player['value_season'] }}</td>
@@ -519,7 +619,6 @@
         </footer>
       </div>
   </div>
-
 
   <!-- classic league awards -->
   <div class="w3-btn w3-ripple w3-border w3-round w3-text-blue w3-disabled">
