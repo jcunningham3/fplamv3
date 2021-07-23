@@ -185,14 +185,49 @@
             <div class="w3-container">
               {% for player in stars %}
                 {% if player['element_type'] == 1 %}
-                <div class="w3-btn w3-ripple">
-                  {% for jersey in jersey_list %}
-                  {% if player['team'] == jersey['id'] %}
-                  <img src="{{jersey['logo']}}" alt="img">
-                  {% endif %}
-                  {% endfor %}
-                  <div class="">{{ player['web_name'] }}</div>
-                  <div class="w3-border w3-round">{{ player['total_points'] }}</div>
+                <div class="w3-dropdown-hover w3-green">
+                  <div class="w3-btn w3-ripple">
+                    {% for jersey in jersey_list %}
+                    {% if player['team'] == jersey['id'] %}
+                    <img src="{{jersey['logo']}}" alt="img">
+                    <div class="">{{ player['web_name'] }}</div>
+                    <div class="w3-border w3-round">{{ player['total_points'] }}</div>
+                    <div class="w3-dropdown-content w3-bar-block w3-border" style="width:350px;">
+                      <div class="w3-cell-row" style="background: {{jersey['colors']}}">
+                        <div class="w3-cell w3-left w3-padding">
+                          <div class=""><b>{{ player['first_name'] }} {{ player['second_name'] }}</b></div>
+                        </div>
+                        <div class="w3-cell w3-left w3-padding">
+                          <div class=""><b>{{ jersey['name'] }}</b></div>
+                        </div>
+                        <div class="w3-cell w3-left w3-padding">
+                          <img src="{{jersey['logo']}}" alt="img">
+                        </div>
+                      </div>
+                      <div class="w3-cell-row">
+                        <div class="w3-cell w3-left w3-padding">
+                          <div class=""><b>form:</b> {{ player['form'] }}</div>
+                          <div class=""><b>pts/gm:</b> {{ player['points_per_game'] }}</div>
+                          <div class=""><b>min:</b> {{ player['minutes'] }}</div>
+                          <div class=""><b>clean sheets:</b> {{ player['clean_sheets'] }}</div>
+                          <div class=""><b>own goals:</b> {{ player['own_goals'] }}</div>
+                          <div class=""><b>saves:</b> {{ player['saves'] }}</div>
+                          <div class=""><b>yellow cards:</b> {{ player['yellow_cards'] }}</div>
+                        </div>
+                        <div class="w3-cell w3-left w3-padding">
+                          <div class=""><b>season value:</b> {{ player['value_season'] }}</div>
+                          <div class=""><b>cost:</b> {{ player['now_cost'] }}</div>
+                          <div class=""><b>total points:</b> {{ player['total_points'] }}</div>
+                          <div class=""><b>goals ceonceded:</b> {{ player['goals_conceded'] }}</div>
+                          <div class=""><b>penalties saved:</b> {{ player['penalties_saved'] }}</div>
+                          <div class=""><b>bonus points:</b> {{ player['bps'] }}</div>
+                          <div class=""><b>red cards:</b> {{ player['red_cards'] }}</div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                  </div>
                 </div>
                 {% endif %}
               {% endfor %}
@@ -202,14 +237,49 @@
             <div class="w3-container">
               {% for player in stars %}
                 {% if player['element_type'] == 2 %}
-                <div class="w3-btn w3-ripple">
-                  {% for jersey in jersey_list %}
-                  {% if player['team'] == jersey['id'] %}
-                  <img src="{{jersey['logo']}}" alt="img">
-                  {% endif %}
-                  {% endfor %}
-                  <div class="">{{ player['web_name'] }}</div>
-                  <div class="w3-border w3-round">{{ player['total_points'] }}</div>
+                <div class="w3-dropdown-hover w3-green">
+                  <div class="w3-btn w3-ripple">
+                    {% for jersey in jersey_list %}
+                    {% if player['team'] == jersey['id'] %}
+                    <img src="{{jersey['logo']}}" alt="img">
+                    <div class="">{{ player['web_name'] }}</div>
+                    <div class="w3-border w3-round">{{ player['total_points'] }}</div>
+                    <div class="w3-dropdown-content w3-bar-block w3-border" style="width:350px;">
+                      <div class="w3-cell-row" style="background: {{jersey['colors']}}">
+                        <div class="w3-cell w3-left w3-padding">
+                          <div class=""><b>{{ player['first_name'] }} {{ player['second_name'] }}</b></div>
+                        </div>
+                        <div class="w3-cell w3-left w3-padding">
+                          <div class=""><b>{{ jersey['name'] }}</b></div>
+                        </div>
+                        <div class="w3-cell w3-left w3-padding">
+                          <img src="{{jersey['logo']}}" alt="img">
+                        </div>
+                      </div>
+                      <div class="w3-cell-row">
+                        <div class="w3-cell w3-padding">
+                          <div class=""><b>form:</b> {{ player['form'] }}</div>
+                          <div class=""><b>pts/gm:</b> {{ player['points_per_game'] }}</div>
+                          <div class=""><b>min:</b> {{ player['minutes'] }}</div>
+                          <div class=""><b>clean sheets:</b> {{ player['clean_sheets'] }}</div>
+                          <div class=""><b>own goals:</b> {{ player['own_goals'] }}</div>
+                          <div class=""><b>saves:</b> {{ player['saves'] }}</div>
+                          <div class=""><b>yellow cards:</b> {{ player['yellow_cards'] }}</div>
+                        </div>
+                        <div class="w3-cell w3-padding">
+                          <div class=""><b>season value:</b> {{ player['value_season'] }}</div>
+                          <div class=""><b>cost:</b> {{ player['now_cost'] }}</div>
+                          <div class=""><b>total points:</b> {{ player['total_points'] }}</div>
+                          <div class=""><b>goals ceonceded:</b> {{ player['goals_conceded'] }}</div>
+                          <div class=""><b>penalties saved:</b> {{ player['penalties_saved'] }}</div>
+                          <div class=""><b>bonus points:</b> {{ player['bps'] }}</div>
+                          <div class=""><b>red cards:</b> {{ player['red_cards'] }}</div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                  </div>
                 </div>
                 {% endif %}
               {% endfor %}
@@ -219,14 +289,49 @@
             <div class="w3-container">
               {% for player in stars %}
                 {% if player['element_type'] == 3 %}
-                <div class="w3-btn w3-ripple">
-                  {% for jersey in jersey_list %}
-                  {% if player['team'] == jersey['id'] %}
-                  <img src="{{jersey['logo']}}" alt="img">
-                  {% endif %}
-                  {% endfor %}
-                  <div class="">{{ player['web_name'] }}</div>
-                  <div class="w3-border w3-round">{{ player['total_points'] }}</div>
+                <div class="w3-dropdown-hover w3-green">
+                  <div class="w3-btn w3-ripple">
+                    {% for jersey in jersey_list %}
+                    {% if player['team'] == jersey['id'] %}
+                    <img src="{{jersey['logo']}}" alt="img">
+                    <div class="">{{ player['web_name'] }}</div>
+                    <div class="w3-border w3-round">{{ player['total_points'] }}</div>
+                    <div class="w3-dropdown-content w3-bar-block w3-border" style="width:300px;">
+                      <div class="w3-cell-row" style="background: {{jersey['colors']}}">
+                        <div class="w3-cell w3-left w3-padding">
+                          <div class=""><b>{{ player['first_name'] }} {{ player['second_name'] }}</b></div>
+                        </div>
+                        <div class="w3-cell w3-left w3-padding">
+                          <div class=""><b>{{ jersey['name'] }}</b></div>
+                        </div>
+                        <div class="w3-cell w3-left w3-padding">
+                          <img src="{{jersey['logo']}}" alt="img">
+                        </div>
+                      </div>
+                      <div class="w3-cell-row">
+                        <div class="w3-cell w3-padding">
+                          <div class=""><b>form:</b> {{ player['form'] }}</div>
+                          <div class=""><b>pts/gm:</b> {{ player['points_per_game'] }}</div>
+                          <div class=""><b>min:</b> {{ player['minutes'] }}</div>
+                          <div class=""><b>clean sheets:</b> {{ player['clean_sheets'] }}</div>
+                          <div class=""><b>own goals:</b> {{ player['own_goals'] }}</div>
+                          <div class=""><b>saves:</b> {{ player['saves'] }}</div>
+                          <div class=""><b>yellow cards:</b> {{ player['yellow_cards'] }}</div>
+                        </div>
+                        <div class="w3-cell w3-padding">
+                          <div class=""><b>season value:</b> {{ player['value_season'] }}</div>
+                          <div class=""><b>cost:</b> {{ player['now_cost'] }}</div>
+                          <div class=""><b>total points:</b> {{ player['total_points'] }}</div>
+                          <div class=""><b>goals ceonceded:</b> {{ player['goals_conceded'] }}</div>
+                          <div class=""><b>penalties saved:</b> {{ player['penalties_saved'] }}</div>
+                          <div class=""><b>bonus points:</b> {{ player['bps'] }}</div>
+                          <div class=""><b>red cards:</b> {{ player['red_cards'] }}</div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                  </div>
                 </div>
                 {% endif %}
               {% endfor %}
@@ -236,14 +341,49 @@
             <div class="w3-container">
               {% for player in stars %}
                 {% if player['element_type'] == 4 %}
-                <div class="w3-btn w3-ripple">
-                  {% for jersey in jersey_list %}
-                  {% if player['team'] == jersey['id'] %}
-                  <img src="{{jersey['logo']}}" alt="img">
-                  {% endif %}
-                  {% endfor %}
-                  <div class="">{{ player['web_name'] }}</div>
-                  <div class="w3-border w3-round">{{ player['total_points'] }}</div>
+                <div class="w3-dropdown-hover w3-green">
+                  <div class="w3-btn w3-ripple">
+                    {% for jersey in jersey_list %}
+                    {% if player['team'] == jersey['id'] %}
+                    <img src="{{jersey['logo']}}" alt="img">
+                    <div class="">{{ player['web_name'] }}</div>
+                    <div class="w3-border w3-round">{{ player['total_points'] }}</div>
+                    <div class="w3-dropdown-content w3-bar-block w3-border" style="width:300px;">
+                      <div class="w3-cell-row" style="background: {{jersey['colors']}}">
+                        <div class="w3-cell w3-left w3-padding">
+                          <div class=""><b>{{ player['first_name'] }} {{ player['second_name'] }}</b></div>
+                        </div>
+                        <div class="w3-cell w3-left w3-padding">
+                          <div class=""><b>{{ jersey['name'] }}</b></div>
+                        </div>
+                        <div class="w3-cell w3-left w3-padding">
+                          <img src="{{jersey['logo']}}" alt="img">
+                        </div>
+                      </div>
+                      <div class="w3-cell-row">
+                        <div class="w3-cell w3-padding">
+                          <div class=""><b>form:</b> {{ player['form'] }}</div>
+                          <div class=""><b>pts/gm:</b> {{ player['points_per_game'] }}</div>
+                          <div class=""><b>min:</b> {{ player['minutes'] }}</div>
+                          <div class=""><b>clean sheets:</b> {{ player['clean_sheets'] }}</div>
+                          <div class=""><b>own goals:</b> {{ player['own_goals'] }}</div>
+                          <div class=""><b>saves:</b> {{ player['saves'] }}</div>
+                          <div class=""><b>yellow cards:</b> {{ player['yellow_cards'] }}</div>
+                        </div>
+                        <div class="w3-cell w3-padding">
+                          <div class=""><b>season value:</b> {{ player['value_season'] }}</div>
+                          <div class=""><b>cost:</b> {{ player['now_cost'] }}</div>
+                          <div class=""><b>total points:</b> {{ player['total_points'] }}</div>
+                          <div class=""><b>goals ceonceded:</b> {{ player['goals_conceded'] }}</div>
+                          <div class=""><b>penalties saved:</b> {{ player['penalties_saved'] }}</div>
+                          <div class=""><b>bonus points:</b> {{ player['bps'] }}</div>
+                          <div class=""><b>red cards:</b> {{ player['red_cards'] }}</div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                  </div>
                 </div>
                 {% endif %}
               {% endfor %}
