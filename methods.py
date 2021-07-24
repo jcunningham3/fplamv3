@@ -9,8 +9,6 @@ team = {
     'stars': []
 }
 
-
-
 keepers = []
 defenders = []
 midfielders = []
@@ -18,7 +16,8 @@ forwards = []
 stars = []
 
 # fpl endpoint needing authorization for team info
-def api_call():
+def api_call(email, password, team_id):
+    team_id = str(team_id)
     # put the cookies received in session to be remembered
     session = requests.session()
 
@@ -27,22 +26,21 @@ def api_call():
 
     # data needed for the post request
     payload = {
-     'password': 'Tottenham7',
-     'login': 'cunheez3@gmail.com',
+     'password': password,
+     'login': email,
      'redirect_uri': 'https://fantasy.premierleague.com/a/login',
      'app': 'plfpl-web'
     }
     session.post(url, data=payload)
 
     # Get response sent with authorization cookies
-    res = session.get('https://fantasy.premierleague.com/api/my-team/307976')
+    res = session.get('https://fantasy.premierleague.com/api/my-team/' + team_id + '/')
 
     # setting the response to a var called 'data' and making the response json
     data = res.json()
 
     team['my_picks'] = data['picks']
     # parsing the data and returning it
-    return data['picks']
 
 # fpl endpoint with player data
 def all_footballers():
@@ -121,12 +119,16 @@ def analysis():
     stars = sorted(stars, key=lambda i: (i['total_points']), reverse=True)
 
 # run all the functions to create the team profile
-def run_team():
-    api_call()
+def run_team(email,password,team_id):
+    api_call(email,password,team_id)
     all_footballers()
-    user_personal_info(307976)
+    user_personal_info(team_id)
     classic_league()
     analysis()
 
-#make_user_profile('cunheez3@gmail.com', 'Tottenham7', 307976)
-#make_user_profile('jan6person@hotmail.com', 'Winter2011', 709137)
+# 'cunheez3@gmail.com', 'Tottenham7', 307976
+# 'jan6person@hotmail.com', 'Winter2011', 709137
+# 'fplexampleman@gmail.com', 'Tottenham7', 1583773
+
+# api_call('jan6person@hotmail.com', 'Winter2011', 709137)
+# print(team['my_picks']['picks'])
