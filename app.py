@@ -16,6 +16,11 @@ debug = DebugToolbarExtension(app)
 
 connect_db(app)
 
+# home route
+@app.route('/')
+def home_route():
+    return redirect('/logon')
+
 # register route
 @app.route('/register', methods=['GET', 'POST'])
 def register_route():
@@ -30,7 +35,7 @@ def register_route():
         db.session.add(new_user)
         db.session.commit()
         session['user_id'] = new_user.id
-        return redirect('/')
+        return redirect('/user')
     return render_template('register.html', form=form)
 
 # loggin in
@@ -42,11 +47,11 @@ def login_route():
         password = form.password.data
         team_id = form.team_id.data
         run_team(email,password,team_id)
-        return redirect('/')
+        return redirect('/user')
     return render_template('login.html', form=form)
 
 # user route
-@app.route('/')
+@app.route('/user')
 def user_page():
     info = team
-    return render_template('home.html', info=info, stars=stars, jersey_list=jersey_list)
+    return render_template('user.html', info=info, stars=stars, jersey_list=jersey_list)

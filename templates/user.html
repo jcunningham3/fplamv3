@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}{% endblock %}
+{% block title %}{{ info['user_info']['name'] }}{% endblock %}
 {% block content %}
 
 <style media="screen">
@@ -30,7 +30,7 @@
       {% for my_players in info['my_picks'] %}
         {% for all_players in info['all_player_data'] %}
           {% if my_players['element'] == all_players['id'] and all_players['element_type'] == 1 and my_players['position'] == 1 %}
-          <div class="w3-btn w3-ripple">
+          <div class="w3-btn w3-ripple" data-toggle="modal" data-target="#myModal{{my_players['element']}}">
             <!-- player img -->
             <div class="container">
             {% for jersey in jersey_list %}
@@ -64,7 +64,7 @@
       {% for my_players in info['my_picks'] %}
         {% for all_players in info['all_player_data'] %}
           {% if my_players['element'] == all_players['id'] and all_players['element_type'] == 2 and my_players['position'] <= 6 %}
-          <div class="w3-btn w3-ripple">
+          <div class="w3-btn w3-ripple" data-toggle="modal" data-target="#myModal{{my_players['element']}}">
             <!-- player img -->
             <div class="container">
             {% for jersey in jersey_list %}
@@ -98,7 +98,7 @@
       {% for my_players in info['my_picks'] %}
         {% for all_players in info['all_player_data'] %}
           {% if my_players['element'] == all_players['id'] and all_players['element_type'] == 3 and my_players['position'] <= 10 %}
-          <div class="w3-btn w3-ripple">
+          <div class="w3-btn w3-ripple" data-toggle="modal" data-target="#myModal{{my_players['element']}}">
             <!-- player img -->
             <div class="container">
             {% for jersey in jersey_list %}
@@ -132,7 +132,7 @@
       {% for my_players in info['my_picks'] %}
         {% for all_players in info['all_player_data'] %}
           {% if my_players['element'] == all_players['id'] and all_players['element_type'] == 4 and my_players['position'] <= 11 %}
-          <div class="w3-btn w3-ripple">
+          <div class="w3-btn w3-ripple" data-toggle="modal" data-target="#myModal{{my_players['element']}}">
             <!-- player img -->
             <div class="container">
             {% for jersey in jersey_list %}
@@ -171,7 +171,7 @@
       {% for my_players in info['my_picks'] %}
         {% for all_players in info['all_player_data'] %}
           {% if my_players['element'] == all_players['id'] and my_players['position'] >= 12 %}
-          <div class="w3-btn w3-ripple">
+          <div class="w3-btn w3-ripple" data-toggle="modal" data-target="#myModal{{my_players['element']}}">
             <!-- player img -->
             <div class="container">
             {% for jersey in jersey_list %}
@@ -202,10 +202,73 @@
 
   </div>
 
+  <!-- player info modal -->
+  <div class="">
+    {% for my_players in info['my_picks'] %}
+      {% for all_players in info['all_player_data'] %}
+        {% if my_players['element'] == all_players['id'] %}
+        <div class="modal fade" id="myModal{{my_players['element']}}">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                {% for jersey in jersey_list %}
+                {% if all_players['team'] == jersey['id'] %}
+                <h4 class="modal-title w3-cell">{{ all_players['first_name'] }} {{ all_players['second_name'] }}</h4>
+                <div style="margin-left:10px;">
+                  <img src="{{jersey['logo']}}" alt="no img">
+                </div>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <hr style="background-color:{{jersey['colors']}}">
+                <div class="w3-cell-row w3-center">
+                  <div class="w3-cell">
+                    <p><b>form</b></p>
+                    <p>{{ all_players['form'] }}</p>
+                  </div>
+                  <div class="w3-cell">
+                    <p><b>gw points</b></p>
+                    <p>{{ all_players['event_points'] }}</p>
+                  </div>
+                  <div class="w3-cell">
+                    <p><b>total points</b></p>
+                    <p>{{ all_players['total_points'] }}</p>
+                  </div>
+                  <div class="w3-cell">
+                    <p><b>price</b></p>
+                    <p>{{ all_players['now_cost'] }}</p>
+                  </div>
+                  <div class="w3-cell">
+                    <p><b>TSB</b></p>
+                    <p>{{ all_players['selected_by_percent'] }}</p>
+                  </div>
+                </div>
+                <hr style="background-color:{{jersey['colors']}}">
+              </div>
+              {% endif %}
+              {% endfor %}
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </div>
+
+
 </div>
 
 <!-- bottom navigation / buttons -->
-<hr>
+<br>
 <div class="w3-container">
 
   <!-- analysis -->
