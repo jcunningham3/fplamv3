@@ -16,6 +16,24 @@ debug = DebugToolbarExtension(app)
 
 connect_db(app)
 
+# register route
+@app.route('/register', methods=['GET', 'POST'])
+def register_route():
+    form = UserForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        password = form.password.data
+        team_id = form.team_id.data
+        run_team(email,password,team_id)
+
+        new_user = Users(email=email, team_id=team_id)
+        db.session.add(new_user)
+        db.session.commit()
+        session['user_id'] = new_user.id
+        return redirect('/')
+    return render_template('register.html', form=form)
+
+# loggin in
 @app.route('/logon', methods=['GET', 'POST'])
 def login_route():
     form = UserForm()
@@ -27,6 +45,7 @@ def login_route():
         return redirect('/')
     return render_template('login.html', form=form)
 
+# user route
 @app.route('/')
 def user_page():
     info = team
