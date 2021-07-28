@@ -46,7 +46,55 @@ jersey_list = [
         'colors': '#034694',
         'logo': '\static\img\logos\che.png',
         'jersey': '\static\img\jerseys\che.webp',
-        'jersey_goal': '\static\img\jerseys\cheg.webp'
+        'jersey_goal': '\static\img\jerseys\cheg.webp',
+        'fixtures': [
+            {
+                'status': 'next',
+                'opponent': 'CRY',
+                'location': 'H'
+            },
+            {
+                'status': 'pending',
+                'opponent': 'ARS',
+                'location': 'A'
+            },
+            {
+                'status': 'pending',
+                'opponent': 'LIV',
+                'location': 'A'
+            },
+            {
+                'status': 'pending',
+                'opponent': 'AVL',
+                'location': 'H'
+            },
+            {
+                'status': 'pending',
+                'opponent': 'TOT',
+                'location': 'A'
+            },
+            {
+                'status': 'pending',
+                'opponent': 'MCY',
+                'location': 'H'
+            },
+            {
+                'status': 'pending',
+                'opponent': 'SOU',
+                'location': 'H'
+            },
+            {
+                'status': 'pending',
+                'opponent': 'BRE',
+                'location': 'A'
+            },
+            {
+                'status': 'pending',
+                'opponent': 'NOR',
+                'location': 'H'
+            },
+
+        ]
     },
     {
         'id': 7,

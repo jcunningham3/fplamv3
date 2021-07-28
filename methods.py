@@ -40,7 +40,6 @@ def api_call(email, password, team_id):
     data = res.json()
 
     team['my_picks'] = data['picks']
-    # parsing the data and returning it
 
 # fpl endpoint with player data
 def all_footballers():
@@ -57,10 +56,14 @@ def user_personal_info(team_id):
     team['user_info'] = data
 
 # get request for users classic league information
-def classic_league():
-    res = requests.get('https://fantasy.premierleague.com/api/leagues-classic/71437/standings/')
-    data = res.json()
-    team['league_info'] = data
+def classic_league(id):
+    if id == 0:
+        return 'user is not participating in a classic league'
+    else:
+        id = str(id)
+        res = requests.get('https://fantasy.premierleague.com/api/leagues-classic/'+ id + '/standings/')
+        data = res.json()
+        team['league_info'] = data
 
 # sorting function that seperates all players by position
 def analysis():
@@ -123,7 +126,6 @@ def run_team(email,password,team_id):
     api_call(email,password,team_id)
     all_footballers()
     user_personal_info(team_id)
-    classic_league()
     analysis()
 
 # 'cunheez3@gmail.com', 'Tottenham7', 307976

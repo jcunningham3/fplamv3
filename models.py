@@ -13,7 +13,7 @@ class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.Text, nullable=False, unique=True)
     team_id = db.Column(db.Integer, nullable=False)
-    league_id = db.Column(db.Integer, nullable=True)
+    classic_id = db.Column(db.Integer, nullable=True)
 
 
 class Chat(db.Model):
@@ -21,6 +21,9 @@ class Chat(db.Model):
 
     league_id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.Text, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    user = db.relationship('Users', backref='chat')
+class League(db.Model):
+    __tablename__ = "league"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    league_id = db.Column(db.Integer, nullable=True)
