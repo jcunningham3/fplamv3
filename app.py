@@ -4,6 +4,7 @@ from models import connect_db, db, Users, Chat, League
 from forms import UserForm, ChatForm, LoginForm
 from methods import api_call, all_footballers, team, run_team, user_personal_info, classic_league, analysis, keepers, defenders, midfielders, forwards, stars
 from jersey_selection import jersey_list
+import os
 
 app = Flask(__name__)
 
