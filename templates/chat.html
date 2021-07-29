@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}login{% endblock %}
+{% block content %}
+<h3>{{ team['league_info']['league']['name'] }} Chat</h3>
+<h3>classic league id: {{ cli }}</h3>
+<a href="/user">
+  <div class="w3-btn w3-ripple text-primary">back</div>
+</a>
+
+{% endblock %}

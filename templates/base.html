@@ -22,13 +22,24 @@
   </style>
 
   <!-- navbar -->
-  <div class="w3-bar w3-dark-grey text-warning">
-    <div class="w3-bar-item">
-      <a href="/" style="text-decoration: none;">
-        <h1>FPL Assistant Manager</h1>
-      </a>
-    </div>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <a class="navbar-brand" href="/">
+    <h3 class="text-warning">FPL Assistant Manager</h3>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link text-primary" href="/register">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-primary" href="/logon">Login</a>
+      </li>
+    </ul>
   </div>
+</nav>
   <br>
 
   <!-- flash messaging -->

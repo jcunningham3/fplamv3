@@ -24,11 +24,11 @@
 
   <!-- stating XI -->
   <div class="w3-display-container w3-center">
-    <img src="\static\img\pitch1.png" alt="" style="width:100%; height: 500px;">
+    <img src="\static\img\pitch1.png" alt="" style="width:100%; height: 450px;">
     <div class="w3-display-middle" style="width: 100%;">
 
         <!-- KEEPER -->
-        <div class="w3-container">
+        <div class="w3-container" style="margin-top: 20px;">
           {% for my_players in info['my_picks'] %}
             {% for all_players in info['all_player_data'] %}
               {% if my_players['element'] == all_players['id'] and all_players['element_type'] == 1 and my_players['position'] == 1 %}
@@ -303,10 +303,10 @@
               <div class="container w3-green w3-center">
 
                 <!-- KEEPER -->
+                <div class="w3-cell w3-padding">
+                  <h3>Goalkeepers</h3>
+                </div>
                 <div class="w3-container">
-                  <div class="w3-cell w3-padding">
-                    <h3>Goalkeepers</h3>
-                  </div>
                   {% for player in stars %}
                     {% if player['element_type'] == 1 %}
                     <div class="w3-cell dropdown">
@@ -359,10 +359,10 @@
                 </div>
 
                 <!-- DEFENDERS -->
+                <div class="w3-cell w3-padding">
+                  <h3>Defenders</h3>
+                </div>
                 <div class="w3-container">
-                  <div class="w3-cell w3-padding">
-                    <h3>Defenders</h3>
-                  </div>
                   {% for player in stars %}
                     {% if player['element_type'] == 2 %}
                     <div class="w3-cell dropdown w3-mobile">
@@ -412,10 +412,11 @@
                 </div>
 
                 <!-- MIDFIELDERS -->
+                <div class="w3-cell w3-padding">
+                  <h3>Midfielders</h3>
+                </div>
                 <div class="w3-container">
-                  <div class="w3-cell w3-padding">
-                    <h3>Midfielders</h3>
-                  </div>
+
                   {% for player in stars %}
                     {% if player['element_type'] == 3 %}
                     <div class="w3-cell dropdown w3-mobile">
@@ -465,10 +466,11 @@
                 </div>
 
                 <!-- FORWARDS -->
+                <div class="w3-cell w3-padding">
+                  <h3>Forwards</h3>
+                </div>
                 <div class="w3-container">
-                  <div class="w3-cell w3-padding">
-                    <h3>Forwards</h3>
-                  </div>
+
                   {% for player in stars %}
                     {% if player['element_type'] == 4 %}
                     <div class="w3-cell dropdown w3-mobile">

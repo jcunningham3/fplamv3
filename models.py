@@ -15,6 +15,15 @@ class Users(db.Model):
     team_id = db.Column(db.Integer, nullable=False)
     classic_id = db.Column(db.Integer, nullable=True)
 
+    @classmethod
+    def authenticate(cls, email):
+        u = Users.query.filter_by(email=email).first()
+
+        if u:
+            return u
+        else:
+            return False
+
 
 class Chat(db.Model):
     __tablename__ = "chat"

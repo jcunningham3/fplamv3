@@ -20,7 +20,7 @@ connect_db(app)
 # home route
 @app.route('/')
 def home_route():
-    return redirect('/logon')
+    return render_template('/home.html')
 
 # register route
 @app.route('/register', methods=['GET', 'POST'])
@@ -36,19 +36,25 @@ def register_route():
         db.session.add(new_user)
         db.session.commit()
         session['user_id'] = new_user.id
+        info = team
+        flash(f"Welcome {info['user_info']['name']}")
         return redirect('/user')
     return render_template('register.html', form=form)
 
-# loggin in
+# logging in
 @app.route('/logon', methods=['GET', 'POST'])
 def login_route():
-    form = UserForm()
+    form = LoginForm()
     if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
-        team_id = form.team_id.data
-        run_team(email,password,team_id)
-        return redirect('/user')
+        user = Users.authenticate(email)
+        if user:
+            session['user_id'] = user.id
+            run_team(email,password,user.team_id)
+            return redirect('/user')
+        else:
+            form.username.errors = ['Invalid username/password.']
     return render_template('login.html', form=form)
 
 # user route
@@ -56,3 +62,9 @@ def login_route():
 def user_page():
     info = team
     return render_template('user.html', info=info, stars=stars, jersey_list=jersey_list)
+
+# logging out
+@app.route('/logout')
+def logout():
+    session.pop('user_id')
+    return redirect('/')
