@@ -20,7 +20,8 @@ connect_db(app)
 # home route
 @app.route('/')
 def home_route():
-    return render_template('/home.html')
+    #return render_template('/home.html')
+    return redirect('/logon')
 
 # register route
 @app.route('/register', methods=['GET', 'POST'])
@@ -63,6 +64,10 @@ def login_route():
 def user_page():
     info = team
     return render_template('user.html', info=info, stars=stars, jersey_list=jersey_list)
+
+@app.route('/team_id')
+def team_id_route():
+    return render_template('team_id.html')
 
 # logging out
 @app.route('/logout')
