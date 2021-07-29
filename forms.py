@@ -11,6 +11,7 @@ class UserForm(FlaskForm):
 class LoginForm(FlaskForm):
     email = StringField("Email", validators=[InputRequired()])
     password = PasswordField("Password", validators=[InputRequired()])
+    team_id = IntegerField("Team Id", validators=[InputRequired()])
 
 
 class ChatForm(FlaskForm):

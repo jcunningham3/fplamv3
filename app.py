@@ -8,7 +8,7 @@ import os
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql:///fplam').replace("://", "ql://", 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql:///fplam')#.replace("://", "ql://", 1)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'crowBottom')
@@ -48,13 +48,14 @@ def login_route():
     if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
-        user = Users.authenticate(email)
-        if user:
-            session['user_id'] = user.id
-            run_team(email,password,user.team_id)
-            return redirect('/user')
-        else:
-            form.username.errors = ['Invalid username/password.']
+        team_id = form.team_id.data
+        # user = Users.authenticate(email)
+        #if user:
+            #session['user_id'] = user.id
+        run_team(email,password,team_id)
+        return redirect('/user')
+        #else:
+            #form.email.errors = ['Invalid email/password.']
     return render_template('login.html', form=form)
 
 # user route
