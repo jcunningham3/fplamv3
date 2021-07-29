@@ -28,11 +28,8 @@ class Users(db.Model):
 class Chat(db.Model):
     __tablename__ = "chat"
 
-    league_id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.Text, nullable=False)
-
-class League(db.Model):
-    __tablename__ = "league"
-
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    league_id = db.Column(db.Integer, nullable=True)
+    text = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    user = db.relationship('Users', backref='chat')
